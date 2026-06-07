@@ -1,0 +1,16 @@
+# Environment files
+.env
+*.env
+.venv
+*-venv
+*_venv
+venv/
+
+# Cryptographic keys
+*.pem
+*.key
+
+# Other
+*.yaml
+*.log
+*.tmp
