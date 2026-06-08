@@ -1,4 +1,4 @@
-import pandas as p
+import pandas as pd
 import yfinance as yf
 import os
 import csv
@@ -26,7 +26,7 @@ def cad_ticker_price_task():
         csv_reader = csv.reader(file)
         watchlist_cad = list(csv_reader)[0]
         
-    watchlist_cad = [x + ".to" for x in watchlist_cad]
+    watchlist_cad = [x.upper() + ".TO" for x in watchlist_cad]
 
     # Create pandas dataframe with data starting from 5 years agi
     start_dt = date.today() - relativedelta(years=5)
@@ -38,8 +38,8 @@ def cad_ticker_price_task():
     finance_df.index.name = None
 
     # Write dataframe to SQL table
-    db_hook = PostgresHook(postgress_conn_id='pg_data_science_conn')
-    engine = db_hook.get_sqlachemy_engine()
+    db_hook = PostgresHook(postgres_conn_id='pg_data_science_conn')
+    engine = db_hook.get_sqlalchemy_engine()
     table_name = "finance.watchlist_cad_ticker_price"
 
     finance_df.to_sql(
