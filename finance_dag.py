@@ -3,6 +3,7 @@ import yfinance as yf
 import os
 import csv
 from datetime import date, datetime, timedelta
+from dateutil.relativedelta import relativedelta
 from airflow.sdk import DAG
 from airflow.providers.standard.operators.python import PythonOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
