@@ -19,7 +19,7 @@ def cad_ticker_price_task():
 
     # Open csv file to get watchlist and read into list
     dag_folder = os.path.dirname(os.path.abspath(__file__))
-    csv_path = os.path.join(dag_folder, "watchlist/watchlist_ca.csv")
+    csv_path = os.path.join(dag_folder, "watchlist/watchlist_cad.csv")
     
     with open(csv_path, mode="r", encoding="utf-8") as file:
         csv_reader = csv.reader(file)
