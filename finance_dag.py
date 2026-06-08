@@ -2,7 +2,7 @@ import pandas as p
 import yfinance as yf
 import os
 import csv
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 from airflow.sdk import DAG
 from airflow.providers.standard.operators.python import PythonOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
