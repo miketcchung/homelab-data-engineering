@@ -1,5 +1,6 @@
 import pandas as p
 import yfinance as yf
+import os
 import csv
 from datetime import datetime, timedelta
 from airflow.sdk import DAG
@@ -17,9 +18,12 @@ def cad_ticker_price_task():
     """
 
     # Open csv file to get watchlist and read into list
-    with open("watchlist/watchlist_cad.csv", mode="r", encoding="utf-8") as file:
+    dag_folder = os.path.dirname(os.path.abspath(__file__))
+    csv_path = os.path.join(dag_folder, "watchlist/watchlist_ca.csv")
+    
+    with open(csv_path, mode="r", encoding="utf-8") as file:
         csv_reader = csv.reader(file)
-        watchlist_cad = list(csv_reader)
+        watchlist_cad = list(csv_reader)[0]
         
     watchlist_cad = [x + ".to" for x in watchlist_cad]
 
